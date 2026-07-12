@@ -1,15 +1,18 @@
 {
+  "id":"/kalkulatorbazis-app/",
   "name":"Kalkulátor Bázis App",
   "short_name":"KB App",
   "description":"Gyors, ingyenes magyar kalkulátorok mobilra.",
-  "start_url":"./",
-  "scope":"./",
+  "start_url":"/kalkulatorbazis-app/",
+  "scope":"/kalkulatorbazis-app/",
   "display":"standalone",
+  "display_override":["standalone","minimal-ui"],
   "background_color":"#f5f7fb",
   "theme_color":"#0f172a",
   "lang":"hu-HU",
   "icons":[
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {"src":"/kalkulatorbazis-app/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/kalkulatorbazis-app/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/kalkulatorbazis-app/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
   ]
 }
