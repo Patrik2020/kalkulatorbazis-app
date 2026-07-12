@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Kalkulátor Bázis App – gyors, ingyenes számítások mobilon, telepíthető és részben offline használható formában.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KB App">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Kalkulátor Bázis App</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="logo">KB</div><div><strong>Kalkulátor Bázis</strong><span>Gyors számítások egy helyen</span></div></div>
+    <button id="installBtn" class="install" hidden>Telepítés</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Ne keresd újra. Mentsd le. Használd.</p>
+      <h1>Mit szeretnél kiszámolni?</h1>
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Például: százalék, BMI, üzemanyag…" autocomplete="off"></label>
+    </section>
+
+    <section id="recentSection" class="section" hidden>
+      <div class="section-head"><h2>Legutóbb használt</h2><button id="clearRecent" class="text-btn">Törlés</button></div>
+      <div id="recentGrid" class="grid compact"></div>
+    </section>
+
+    <section id="favoritesSection" class="section" hidden>
+      <div class="section-head"><h2>Kedvencek</h2></div>
+      <div id="favoritesGrid" class="grid compact"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Kalkulátorok</h2><span id="resultCount"></span></div>
+      <div id="calculatorGrid" class="grid"></div>
+      <p id="emptyState" class="empty" hidden>Nincs találat. Próbálj másik kifejezést.</p>
+    </section>
+  </main>
+
+  <dialog id="calcDialog">
+    <div class="dialog-shell">
+      <header class="dialog-head"><div><span id="dialogCategory"></span><h2 id="dialogTitle"></h2></div><button id="closeDialog" aria-label="Bezárás">×</button></header>
+      <div id="dialogBody" class="dialog-body"></div>
+    </div>
+  </dialog>
+
+  <footer><a href="https://kalkulatorbazis.hu">kalkulatorbazis.hu</a><span>Az eredmények tájékoztató jellegűek.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
