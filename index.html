@@ -9,27 +9,43 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="KB App">
-  <link rel="manifest" href="/kalkulatorbazis-app/manifest.webmanifest">
-  <link rel="apple-touch-icon" sizes="192x192" href="/kalkulatorbazis-app/icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/kalkulatorbazis-app/icons/icon-192.png">
-  <link rel="stylesheet" href="/kalkulatorbazis-app/style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
   <title>Kalkulátor Bázis App</title>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><div class="logo">KB</div><div><strong>Kalkulátor Bázis</strong><span>Gyors számítások egy helyen</span></div></div>
-    <button id="installBtn" class="install" hidden>Telepítés</button>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">KB</div>
+      <div>
+        <strong>Kalkulátor Bázis</strong>
+        <span>Gyors számítások egy helyen</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span id="runtimeBadge" class="runtime-badge" title="Számítási mód"></span>
+      <button id="installBtn" class="install" type="button" hidden>Telepítés</button>
+    </div>
   </header>
+
+  <div id="offlineBanner" class="offline-banner" role="status" hidden>
+    Offline mód – a helyi kalkulátorok továbbra is használhatók.
+  </div>
 
   <main>
     <section class="hero">
       <p class="eyebrow">Ne keresd újra. Mentsd le. Használd.</p>
       <h1>Mit szeretnél kiszámolni?</h1>
-      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Például: százalék, BMI, üzemanyag…" autocomplete="off"></label>
+      <label class="search">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Például: százalék, BMI, üzemanyag…" autocomplete="off">
+      </label>
     </section>
 
     <section id="recentSection" class="section" hidden>
-      <div class="section-head"><h2>Legutóbb használt</h2><button id="clearRecent" class="text-btn">Törlés</button></div>
+      <div class="section-head"><h2>Legutóbb használt</h2><button id="clearRecent" class="text-btn" type="button">Törlés</button></div>
       <div id="recentGrid" class="grid compact"></div>
     </section>
 
@@ -47,12 +63,19 @@
 
   <dialog id="calcDialog">
     <div class="dialog-shell">
-      <header class="dialog-head"><div><span id="dialogCategory"></span><h2 id="dialogTitle"></h2></div><button id="closeDialog" aria-label="Bezárás">×</button></header>
+      <header class="dialog-head">
+        <div><span id="dialogCategory"></span><h2 id="dialogTitle"></h2></div>
+        <button id="closeDialog" type="button" aria-label="Bezárás">×</button>
+      </header>
       <div id="dialogBody" class="dialog-body"></div>
     </div>
   </dialog>
 
-  <footer><a href="https://kalkulatorbazis.hu">kalkulatorbazis.hu</a><span>Az eredmények tájékoztató jellegűek.</span></footer>
-  <script src="/kalkulatorbazis-app/app.js"></script>
+  <footer>
+    <a href="https://kalkulatorbazis.hu">kalkulatorbazis.hu</a>
+    <span>Az eredmények tájékoztató jellegűek.</span>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
