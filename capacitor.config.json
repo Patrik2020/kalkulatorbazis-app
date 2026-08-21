@@ -1,0 +1,9 @@
+{
+  "appId": "hu.kalkulatorbazis.app",
+  "appName": "Kalkulátor Bázis",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
