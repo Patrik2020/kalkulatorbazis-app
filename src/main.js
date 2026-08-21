@@ -46,6 +46,34 @@ const renderField = (field) => {
   return `<div class="field"><label for="${field.key}">${field.label}</label><input ${attributes}></div>`;
 };
 
+const appendTextElement = (parent, tagName, text, className = "") => {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  element.textContent = String(text ?? "");
+  parent.appendChild(element);
+  return element;
+};
+
+function renderCalculationResult(result) {
+  const host = $("#calcResult");
+  const box = document.createElement("div");
+  box.className = "result";
+  appendTextElement(box, "small", "Eredmény");
+  appendTextElement(box, "strong", result.main);
+  appendTextElement(box, "small", result.sub || "");
+  appendTextElement(box, "small", sourceLabel(result.meta), "result-meta");
+  host.replaceChildren(box);
+}
+
+function renderCalculationError(error) {
+  const host = $("#calcResult");
+  const box = document.createElement("div");
+  box.className = "result error-result";
+  appendTextElement(box, "strong", "Nem sikerült kiszámolni");
+  appendTextElement(box, "small", error?.message || "Ismeretlen hiba.");
+  host.replaceChildren(box);
+}
+
 function card(calculator) {
   const element = document.createElement("article");
   element.className = "card";
@@ -124,9 +152,9 @@ async function openCalculator(calculator) {
     try {
       const values = Object.fromEntries(new FormData(form).entries());
       const result = await calculatorService.calculate(calculator, values);
-      $("#calcResult").innerHTML = `<div class="result"><small>Eredmény</small><strong>${result.main}</strong><small>${result.sub || ""}</small><small class="result-meta">${sourceLabel(result.meta)}</small></div>`;
+      renderCalculationResult(result);
     } catch (error) {
-      $("#calcResult").innerHTML = `<div class="result error-result"><strong>Nem sikerült kiszámolni</strong><small>${error.message || "Ismeretlen hiba."}</small></div>`;
+      renderCalculationError(error);
     } finally {
       button.disabled = false;
       button.textContent = "Kiszámolom";
